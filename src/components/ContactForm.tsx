@@ -1,8 +1,8 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Action, Commentaire } from '../reducer/comReducer';
 
-interface ContactFormProps {
+export interface ContactFormProps {
   dispatch: React.Dispatch<Action>;
   dataToEdit: Commentaire | undefined;
   toggleModal: () => void;
@@ -75,7 +75,7 @@ const ContactForm: FC<ContactFormProps> = ({
   };
 
   return (
-    <Form onSubmit={handleOnSubmit} className='contact-form'>
+    <Form onSubmit={handleOnSubmit} className='contact-form' data-testid="contact-form">
       {errorMsg && <p className='errorMsg'>{errorMsg}</p>}
       <Form.Group controlId='titre'>
         <Form.Label>Titre</Form.Label>
@@ -85,6 +85,7 @@ const ContactForm: FC<ContactFormProps> = ({
           value={com.titre}
           type='text'
           onChange={handleOnChange}
+          data-testid='titre-input' // Ajout de l'attribut data-testid
         />
       </Form.Group>
       <Form.Group controlId='note'>
@@ -93,8 +94,9 @@ const ContactForm: FC<ContactFormProps> = ({
           className='note'
           name='note'
           value={com.note}
-          type='number'
+          type='string'
           onChange={handleOnChange}
+          data-testid='note-input' // Ajout de l'attribut data-testid
         />
       </Form.Group>
       <Form.Group controlId='commentaire'>
@@ -105,6 +107,7 @@ const ContactForm: FC<ContactFormProps> = ({
           value={com.commentaire}
           type='text'
           onChange={handleOnChange}
+          data-testid='commentaire-input' // Ajout de l'attribut data-testid
         />
       </Form.Group>
       <Form.Group controlId='submit'>
@@ -114,6 +117,5 @@ const ContactForm: FC<ContactFormProps> = ({
       </Form.Group>
     </Form>
   );
-};
-
+  }
 export default ContactForm;

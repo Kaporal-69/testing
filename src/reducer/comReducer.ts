@@ -1,3 +1,4 @@
+
 export interface Commentaire {
   id: number;
   titre: string;
@@ -27,6 +28,7 @@ export const comReducer = (state: State, action: Action): State => {
         coms: [...state.coms, action.payload as Commentaire]
       };
     case 'UPDATE_COM':
+      // eslint-disable-next-line no-case-declarations
       const { id, updates } = action.payload as Update;
       return {
         ...state,

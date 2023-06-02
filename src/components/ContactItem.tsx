@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { Action, Commentaire } from '../reducer/comReducer';
 
-interface ExtraProps {
+export interface ExtraProps {
     handleEdit: (id: number) => void;
     dispatch: React.Dispatch<Action>;
     backgroundColor: string;
@@ -24,7 +24,7 @@ const ContactItem: FC<Commentaire & ExtraProps> = ({
             <td>{note}</td>
             <td>{commentaire}</td>
             <td>
-                <AiFillEdit size={20} onClick={() => handleEdit(id)} className="icon" />
+                <AiFillEdit size={20} onClick={() => handleEdit(id)} className="icon" data-testid="edit-icon" />
             </td>
             <td>
                 <AiFillDelete
@@ -41,6 +41,7 @@ const ContactItem: FC<Commentaire & ExtraProps> = ({
                         }
                     }}
                     className="icon"
+                    data-testid="delete-icon"
                 />
             </td>
         </tr>
