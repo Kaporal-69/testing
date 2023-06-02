@@ -18,7 +18,7 @@ const EditModal: FC<EditModalProps> = ({
 }) => {
   return (
     <Modal show={showModal} onHide={toggleModal}>
-      <Modal.Header closeButton>
+      <Modal.Header closeButton  data-testid="modal-close-button">
         <Modal.Title>Update Note</Modal.Title>
       </Modal.Header>
       <Modal.Body>
